@@ -4,8 +4,8 @@
 
 ## Getting Started
 
-These instructions will get your copy of the project up and running on your local machine. In the directory of your chosing run: 
+These instructions will get your copy of the project up and running on your local machine. Clone this repository into the directory of your chosing. Inside the project folder run: 
 
   - npm install
-  - npm run build
+  - npm run build 
   - npm start
