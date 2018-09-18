@@ -1,14 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types';
-import App from '../App';
 import Row from './Row';
 
 const Board = (props) => (
-  <div>
+  <div className="board">
     {
-      this.props.board.map((row, i) => 
-        <Row row={row} handleClick={this.props.handleClick} key={i} rowNum={i} i={i} />
+      props.board.map((row, i) => 
+        <Row row={row} handleClick={props.handleClick} key={i} rowNum={i} i={i} />
       )
     }
   </div>

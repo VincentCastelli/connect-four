@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Cell from './Cell';
 
 const Row = (props) => (
-  <div className="row" id={this.props.i}>
+  <div className="row" id={props.i}>
     {
-      this.props.row.map((cell, i) => 
-        <Cell cell={cell} handleClick={this.props.handleClick} key={i} rowId={this.props.i} i={i} />
+      props.row.map((cell, i) => 
+        <Cell cell={cell} handleClick={props.handleClick} key={i} rowId={props.i} i={i} />
       )
     }
   </div>  

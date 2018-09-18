@@ -13,7 +13,7 @@ class App extends React.Component {
       gameScreen: false,
       playerOneName: '',
       playerTwoName: '',
-      currentTurn: 'red',
+      currentTurn: true,
       totalTurns: 0,
       board: [
         [null, null, null, null, null, null],
@@ -23,7 +23,7 @@ class App extends React.Component {
         [null, null, null, null, null, null],
         [null, null, null, null, null, null],
         [null, null, null, null, null, null],
-      ]
+      ],
 
     };
 
@@ -58,19 +58,35 @@ class App extends React.Component {
     evt.preventDefault();
   }
 
-  handleClick() {
-    //fill out
+  handleClick(evt) {
+    const board = this.state.board.map(row => row.map(cell => cell));
+    for (let i = 5; i >= 0; i--) {
+      if (board[i][evt.target.getAttribute('col')] === 'null') {
+        if (this.state.currentTurn) {
+          board[i][evt.target.getAttribute('col')] = 'X';
+        } else {
+          board[i][evt.target.getAttribute('col')] = 'O';
+        }
+      }
+      break;
+    }
+
+    this.setState({
+      board,
+      currentTurn: !this.state.currentTurn,
+      totalTurns: this.state.totalTurns++
+    });
   }
 
   handleTurnChange() {
     if (this.state.currentTurn === 'red') {
-      this.setState({ 
+      this.setState({
         currentTurn: 'black',
       });
     } else {
       this.setState({
         currentTurn: 'red',
-      })
+      });
     }
   }
 
@@ -94,8 +110,8 @@ class App extends React.Component {
         </div>
         <div>
           {
-            this.state.gameScreen && 
-            <Turn 
+            this.state.gameScreen &&
+            <Turn
               playerOneName={this.state.playerOneName}
               playerTwoName={this.state.playerTwoName}
               currentTurn={this.state.currentTurn}
