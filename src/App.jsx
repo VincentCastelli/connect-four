@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TitleScreen from './components/TitleScreen';
+import Game from './components/Game';
 import './style/style.css';
 
 class App extends React.Component {
@@ -8,16 +8,40 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      gameStart: false,
+      titleScreen: true,
+      gameScreen: false,
+      playerOneName: '',
+      playerTwoName: '',
     };
 
-    this.handleGameStart = this.handleGameStart.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangePlayerOne = this.handleChangePlayerOne.bind(this);
+    this.handleChangePlayerTwo = this.handleChangePlayerTwo.bind(this);
   }
 
-  handleGameStart() {
+  handleChangePlayerOne(evt) {
+    const playerOneInput = evt.target.value.charAt(0).toUpperCase() + evt.target.value.substr(1);
+    this.setState({
+      playerOneName: playerOneInput,
+    });
+    evt.preventDefault();
+  }
+
+  handleChangePlayerTwo(evt) {
+    const playerTwoInput = evt.target.value.charAt(0).toUpperCase() + evt.target.value.substr(1);
+    this.setState({
+      playerTwoName: playerTwoInput,
+    });
+    evt.preventDefault();
+  }
+
+  handleSubmit(evt) {
+    console.log(evt.target.value);
     this.setState(prevstate => ({
-      gameStart: !prevstate.gameStart,
+      titleScreen: !prevstate.titleScreen,
+      gameScreen: !prevstate.gameStart,
     }));
+    evt.preventDefault();
   }
 
   render() {
@@ -26,17 +50,30 @@ class App extends React.Component {
         <div className="title-head">
           <h1>CONNECT FOUR</h1>
         </div>
-        {
-          !this.gameStart &&
-          <TitleScreen gameStart={this.handleGameStart} />
-        }
+        <div>
+          {
+            this.state.titleScreen &&
+            <TitleScreen
+              onSubmit={this.handleSubmit}
+              handleChangePlayerOne={this.handleChangePlayerOne}
+              handleChangePlayerTwo={this.handleChangePlayerTwo}
+              playerOneName={this.state.playerOneName}
+              playerTwoName={this.state.playerTwoName}
+            />
+          }
+        </div>
+        <div>
+          {
+            this.state.gameScreen && 
+            <Game 
+              playerOneName={this.state.playerOneName}
+              playerTwoName={this.state.playerTwoName}
+            />
+          }
+        </div>
       </div>
     );
   }
 }
-
-App.propTypes = {
-  gameStart: PropTypes.func.isRequired,
-};
 
 export default App;

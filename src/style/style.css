@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -22,7 +25,6 @@ body {
 .btn {
   font-weight: bold;
   letter-spacing: 1px;
-  padding: 15px 25px;
   outline: none;
   position: relative;
 	-webkit-transition: all 0.3s;
@@ -33,6 +35,7 @@ body {
   border: none;
   font-size: 25px;
   border-radius: 5px;
+  padding: 15px 25px;
   background:#cb4e4e;
   box-shadow: 0 8px #ab3c3c;
   color: #fff; 
@@ -49,8 +52,9 @@ body {
 
 .btn-nice-2 {
   border: none;
-  font-size: 12px;
+  font-size: 15px;
   border-radius: 5px;
+  padding: 8px 25px;
   background:#cb4e4e;
   box-shadow: 0 8px #ab3c3c;
   color: #fff; 
@@ -75,4 +79,5 @@ input[type=text] {
 
 input[type=text]:focus {
   border-color: #333;
+  outline: none;
 }

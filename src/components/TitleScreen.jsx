@@ -7,14 +7,9 @@ class TitleScreen extends React.Component {
     this.state = {
       isNewGameInit: false,
       isHiddenPlayers: true,
-      playerOne: '',
-      playerTwo: '',
     };
 
     this.toggleIsHiddenPlayers = this.toggleIsHiddenPlayers.bind(this);
-    this.handleChangePlayerOne = this.handleChangePlayerOne.bind(this);
-    this.handleChangePlayerTwo = this.handleChangePlayerTwo.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   toggleIsHiddenPlayers() {
@@ -24,27 +19,6 @@ class TitleScreen extends React.Component {
     }));
   }
 
-  handleChangePlayerOne(evt) {
-    evt.preventDefault();
-    const playerOneInput = evt.target.value.toUpperCase();
-    this.setState({
-      playerOne: playerOneInput,
-    });
-  }
-
-  handleChangePlayerTwo(evt) {
-    evt.preventDefault();
-    const playerTwoInput = evt.target.value.toUpperCase();
-    this.setState({
-      playerTwo: playerTwoInput,
-    });
-  }
-
-  handleSubmit(evt) {
-    evt.preventDefault();
-    this.props.gameStart();
-  }
-
   render() {
     return (
       <div>
@@ -52,16 +26,16 @@ class TitleScreen extends React.Component {
           {
             !this.state.isNewGameInit &&
             <button className="btn btn-nice-1" onClick={this.toggleIsHiddenPlayers} type="submit">
-            New Game
-          </button>
+              New Game
+            </button>
           }
         </div>
         <div>
           {
             !this.state.isHiddenPlayers &&
-            <form onSubmit={this.handleSubmit} className="form-container">
-              <input type="text" placeholder="Enter player one name..." value={this.state.playerOne} minLength="1" maxLength="10" onChange={this.handleChangePlayerOne} />
-              <input type="text" placeholder="Enter player two name..." value={this.state.playerTwo} minLength="1" maxLength="10" onChange={this.handleChangePlayerTwo} />
+            <form onSubmit={this.props.onSubmit} className="form-container">
+              <input type="text" placeholder="Enter player one name" value={this.props.playerOneName} minLength="1" maxLength="10" onChange={this.props.handleChangePlayerOne} />
+              <input type="text" placeholder="Enter player two name" value={this.props.playerTwoName} minLength="1" maxLength="10" onChange={this.props.handleChangePlayerTwo} />
               <button className="btn btn-nice-2" type="submit"> Start </button>
             </form>
           }
