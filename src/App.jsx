@@ -1,6 +1,7 @@
 import React from 'react';
 import TitleScreen from './components/TitleScreen';
-import Game from './components/Game';
+import Turn from './components/Turn';
+import Board from './components/Board';
 import './style/style.css';
 
 class App extends React.Component {
@@ -13,14 +14,15 @@ class App extends React.Component {
       playerOneName: '',
       playerTwoName: '',
       currentTurn: 'red',
+      totalTurns: 0,
       board: [
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
+        [null, null, null, null, null, null],
+        [null, null, null, null, null, null],
+        [null, null, null, null, null, null],
+        [null, null, null, null, null, null],
+        [null, null, null, null, null, null],
+        [null, null, null, null, null, null],
+        [null, null, null, null, null, null],
       ]
 
     };
@@ -29,6 +31,7 @@ class App extends React.Component {
     this.handleChangePlayerTwo = this.handleChangePlayerTwo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTurnChange = this.handleTurnChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChangePlayerOne(evt) {
@@ -53,6 +56,10 @@ class App extends React.Component {
       gameScreen: !prevstate.gameStart,
     }));
     evt.preventDefault();
+  }
+
+  handleClick() {
+    //fill out
   }
 
   handleTurnChange() {
@@ -88,11 +95,19 @@ class App extends React.Component {
         <div>
           {
             this.state.gameScreen && 
-            <Game 
+            <Turn 
               playerOneName={this.state.playerOneName}
               playerTwoName={this.state.playerTwoName}
               currentTurn={this.state.currentTurn}
-              gameBoard={this.state.board}
+            />
+          }
+        </div>
+        <div>
+          {
+            this.state.gameScreen &&
+            <Board
+              handleClick={this.handleClick}
+              board={this.state.board}
             />
           }
         </div>

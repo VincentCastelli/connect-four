@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Game = ({currentTurn, playerOneName, playerTwoName}) => {
+const Turn = ({currentTurn, playerOneName, playerTwoName}) => {
   return (
-    <h1>
+    <h1 className="player-turn">
       {
         currentTurn === 'red' ? `${playerOneName}'s turn` : `${playerTwoName}'s turn`
       }
@@ -11,10 +11,10 @@ const Game = ({currentTurn, playerOneName, playerTwoName}) => {
   )
 };
 
-Game.propTypes = {
+Turn.propTypes = {
   playerOneName: PropTypes.string.isRequired,
   playerTwoName: PropTypes.string.isRequired,
   currentTurn: PropTypes.string.isRequired,
 };
 
-export default Game;
+export default Turn;

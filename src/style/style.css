@@ -81,3 +81,16 @@ input[type=text]:focus {
   border-color: #333;
   outline: none;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  order: integer;
+  border: solid 1px;
+  height: 50px;
+  width: 50px;
+  background: lightgray;
+}
