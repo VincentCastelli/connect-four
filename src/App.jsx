@@ -12,11 +12,23 @@ class App extends React.Component {
       gameScreen: false,
       playerOneName: '',
       playerTwoName: '',
+      currentTurn: 'red',
+      board: [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+      ]
+
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangePlayerOne = this.handleChangePlayerOne.bind(this);
     this.handleChangePlayerTwo = this.handleChangePlayerTwo.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTurnChange = this.handleTurnChange.bind(this);
   }
 
   handleChangePlayerOne(evt) {
@@ -43,6 +55,18 @@ class App extends React.Component {
     evt.preventDefault();
   }
 
+  handleTurnChange() {
+    if (this.state.currentTurn === 'red') {
+      this.setState({ 
+        currentTurn: 'black',
+      });
+    } else {
+      this.setState({
+        currentTurn: 'red',
+      })
+    }
+  }
+
   render() {
     return (
       <div>
@@ -67,6 +91,8 @@ class App extends React.Component {
             <Game 
               playerOneName={this.state.playerOneName}
               playerTwoName={this.state.playerTwoName}
+              currentTurn={this.state.currentTurn}
+              gameBoard={this.state.board}
             />
           }
         </div>
