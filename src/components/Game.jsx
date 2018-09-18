@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Game extends React.Component {
   constructor(props) {
@@ -32,5 +33,10 @@ class Game extends React.Component {
     );
   }
 }
+
+Game.propTypes = {
+  playerOneName: PropTypes.string.isRequired,
+  playerTwoName: PropTypes.string.isRequired,
+};
 
 export default Game;

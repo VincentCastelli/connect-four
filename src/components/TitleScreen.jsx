@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class TitleScreen extends React.Component {
   constructor(props) {
@@ -44,5 +45,13 @@ class TitleScreen extends React.Component {
     );
   }
 }
+
+TitleScreen.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  handleChangePlayerOne: PropTypes.func.isRequired,
+  handleChangePlayerTwo: PropTypes.func.isRequired,
+  playerOneName: PropTypes.string.isRequired,
+  playerTwoName: PropTypes.string.isRequired,
+};
 
 export default TitleScreen;

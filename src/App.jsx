@@ -36,7 +36,6 @@ class App extends React.Component {
   }
 
   handleSubmit(evt) {
-    console.log(evt.target.value);
     this.setState(prevstate => ({
       titleScreen: !prevstate.titleScreen,
       gameScreen: !prevstate.gameStart,
