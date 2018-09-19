@@ -96,9 +96,12 @@ input[type=text]:focus {
 }
 
 .col {
+  font-size: 42px;
+  text-align: center;
+  align-items: center;
   order: integer;
   border: solid 1px;
-  height: 75px;
-  width: 75px;
+  height: 65px;
+  width: 65px;
   background: lightgray;
 }

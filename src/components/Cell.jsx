@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Cell = props => (
-  <div className="col" col={props.i} row={props.rowId} onClick={props.handleClick}>
+  <div className="col" data={props.i} row={props.rowId} onClick={props.handleClick}>
     {props.cell}
   </div>
 );

@@ -14,16 +14,15 @@ class App extends React.Component {
       playerOneName: '',
       playerTwoName: '',
       currentTurn: true,
-      totalTurns: 0,
+      messageVis: false,
       message: '',
       board: [
-        [null, null, null, null, null, null],
-        [null, null, null, null, null, null],
-        [null, null, null, null, null, null],
-        [null, null, null, null, null, null],
-        [null, null, null, null, null, null],
-        [null, null, null, null, null, null],
-        [null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
       ],
 
     };
@@ -61,20 +60,19 @@ class App extends React.Component {
   handleClick(evt) {
     const newBoard = this.state.board.map(row => row.map(cell => cell));
     for (let i = 5; i >= 0; i--) {
-      console.log([i], [evt.target.getAttribute('col')][i]);
-      if (newBoard[i][evt.target.getAttribute('col')] === null) {
+      if (newBoard[i][evt.target.getAttribute('data')] === null) {
         if (this.state.currentTurn) {
-          newBoard[i][evt.target.getAttribute('col')] = 'X';
+          newBoard[i][evt.target.getAttribute('data')] = 'X';
         } else {
-          newBoard[i][evt.target.getAttribute('col')] = 'O';
+          newBoard[i][evt.target.getAttribute('data')] = 'O';
         }
+        break;
       }
     }
 
     this.setState({
       board: newBoard,
       currentTurn: !this.state.currentTurn,
-      totalTurns: this.state.totalTurns++
     });
 
     if (this.checkAllMajorDiagonals('X')) {
