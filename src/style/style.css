@@ -82,6 +82,10 @@ input[type=text]:focus {
   outline: none;
 }
 
+.player-turn {
+  text-align: center;
+}
+
 .board {
   margin-left: 30%;
 }

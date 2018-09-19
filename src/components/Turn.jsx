@@ -14,7 +14,7 @@ const Turn = ({ currentTurn, playerOneName, playerTwoName }) => {
 Turn.propTypes = {
   playerOneName: PropTypes.string.isRequired,
   playerTwoName: PropTypes.string.isRequired,
-  currentTurn: PropTypes.string.isRequired,
+  currentTurn: PropTypes.bool.isRequired,
 };
 
 export default Turn;
